@@ -1,3 +1,0 @@
-[submodule "tools/chibios_config_wizard/resources/gencfg"]
-	path = tools/chibios_config_wizard/resources/gencfg
-	url = ../chibios-ftl.git
