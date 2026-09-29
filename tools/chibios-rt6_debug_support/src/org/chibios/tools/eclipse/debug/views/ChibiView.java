@@ -146,7 +146,6 @@ public class ChibiView extends ViewPart {
       }
     });
     setInactive();
-    tabFolder.setSimple(false);
 
     tbtmGlobal = new CTabItem(tabFolder, SWT.NONE);
     tbtmGlobal.setText("Global");

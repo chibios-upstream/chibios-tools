@@ -23,7 +23,6 @@ import org.chibios.tools.eclipse.debug.utils.HexUtils;
 import org.chibios.tools.eclipse.debug.utils.KernelObjects;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ControlContribution;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -243,7 +242,6 @@ public class ChibiView extends ViewPart {
       }
     });
     setInactive();
-    tabFolder.setSimple(false);
 
     tbtmGlobal = new CTabItem(tabFolder, SWT.NONE);
     tbtmGlobal.setText("Global");
@@ -1327,7 +1325,6 @@ public class ChibiView extends ViewPart {
     }
 
     for (int i = 0; i < clusters.size(); i++) {
-      TimeCluster cluster = clusters.get(i);
       long visibleStart = getFittedClusterStart(clusters, i, windowStart);
       long visibleEnd = getFittedClusterEnd(clusters, i, windowEnd);
       TimelineSpan span = new TimelineSpan();
@@ -1598,15 +1595,12 @@ public class ChibiView extends ViewPart {
         (lane.segment.kind == kind) &&
         lane.segment.state.equals(stateValue)) {
       lane.segment.endTime = time;
-      lane.terminated = false;
       return;
     }
 
     if (lane.segment != null)
       lane.segment.endTime = time;
 
-    lane.terminated = false;
-    lane.terminateTime = Long.MAX_VALUE;
     lane.segment = new TraceSegment();
     lane.segment.startTime = time;
     lane.segment.endTime = time;
@@ -1620,8 +1614,6 @@ public class ChibiView extends ViewPart {
     if (lane.segment != null)
       lane.segment.endTime = time;
     lane.segment = null;
-    lane.terminated = true;
-    lane.terminateTime = time;
   }
 
   private void paintTraceGraph(PaintEvent e) {
@@ -2501,8 +2493,6 @@ public class ChibiView extends ViewPart {
     String address;
     String name;
     long firstSeen = Long.MAX_VALUE;
-    boolean terminated;
-    long terminateTime = Long.MAX_VALUE;
     TraceSegment segment;
     List<TraceSegment> segments = new ArrayList<TraceSegment>(8);
   }
