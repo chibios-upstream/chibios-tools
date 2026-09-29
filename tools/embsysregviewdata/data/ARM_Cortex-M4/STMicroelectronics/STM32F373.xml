@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+Copyright (c) 2023 STMicroelectronics.
+
+ SPDX-License-Identifier: Apache-2.0
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <device schemaVersion="1.1"
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
-  <cpu>                                                           <!-- details about the cpu embedded in the device -->
-    <name>CM4</name>
-    <revision>r0p0</revision>
-    <endian>little</endian>
-    <nvicPrioBits>4</nvicPrioBits>
-  </cpu>
   <name>STM32F373</name>
-  <version>1.2</version>
+  <version>1.7</version>
   <description>STM32F373</description>
-  <!--Bus Interface Properties-->
-  <!--Cortex-M4 is byte addressable-->
+  <cpu>
+    <name>CM4</name>
+    <revision>r1p0</revision>
+    <endian>little</endian>
+    <mpuPresent>true</mpuPresent>
+    <fpuPresent>true</fpuPresent>
+    <nvicPrioBits>3</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
   <addressUnitBits>8</addressUnitBits>
-  <!--the maximum data bit width accessible within a single transfer-->
   <width>32</width>
-  <!--Register Default Properties-->
   <size>0x20</size>
   <resetValue>0x0</resetValue>
   <resetMask>0xFFFFFFFF</resetMask>
@@ -5407,7 +5423,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>FLASH_IRQ</name>
+        <name>FLASH</name>
         <description>Flash global interrupt</description>
         <value>4</value>
       </interrupt>
@@ -5723,7 +5739,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>RCC_IRQ</name>
+        <name>RCC</name>
         <description>RCC global interrupt</description>
         <value>5</value>
       </interrupt>
@@ -6899,37 +6915,37 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>DMA1_CH1_IRQ</name>
+        <name>DMA1_CH1</name>
         <description>DMA1 channel 1 interrupt</description>
         <value>11</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH2_IRQ</name>
+        <name>DMA1_CH2</name>
         <description>DMA1 channel 2 interrupt</description>
         <value>12</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH3_IRQ</name>
+        <name>DMA1_CH3</name>
         <description>DMA1 channel 3 interrupt</description>
         <value>13</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH4_IRQ</name>
+        <name>DMA1_CH4</name>
         <description>DMA1 channel 4 interrupt</description>
         <value>14</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH5_IRQ</name>
+        <name>DMA1_CH5</name>
         <description>DMA1 channel 5 interrupt</description>
         <value>15</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH6_IRQ</name>
+        <name>DMA1_CH6</name>
         <description>DMA1 channel 6 interrupt</description>
         <value>16</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_CH7_IRQ</name>
+        <name>DMA1_CH7</name>
         <description>DMA1 channel 7 interrupt</description>
         <value>17</value>
       </interrupt>
@@ -8342,6 +8358,31 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     <peripheral derivedFrom="DMA1">
       <name>DMA2</name>
       <baseAddress>0x40020400</baseAddress>
+      <interrupt>
+        <name>DMA2_CH1</name>
+        <description>DMA2 channel interrupt</description>
+        <value>56</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH2</name>
+        <description>DMA2 channel interrupt</description>
+        <value>57</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH3</name>
+        <description>DMA2 channel interrupt</description>
+        <value>58</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH4</name>
+        <description>DMA2 channel interrupt</description>
+        <value>59</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH5</name>
+        <description>DMA2 channel interrupt</description>
+        <value>60</value>
+      </interrupt>
     </peripheral>
     <peripheral>
       <name>TIM2</name>
@@ -8354,7 +8395,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM2_IRQ</name>
+        <name>TIM2</name>
         <description>Timer 2 global interrupt</description>
         <value>28</value>
       </interrupt>
@@ -8865,7 +8906,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>O24CE</name>
+              <name>OC4CE</name>
               <description>Output compare 4 clear
               enable</description>
               <bitOffset>15</bitOffset>
@@ -9311,7 +9352,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM5_IRQ</name>
+        <name>TIM5</name>
         <description>Timer 5 global interrupt</description>
         <value>50</value>
       </interrupt>
@@ -9822,7 +9863,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>O24CE</name>
+              <name>OC4CE</name>
               <description>Output compare 4 clear
               enable</description>
               <bitOffset>15</bitOffset>
@@ -10268,7 +10309,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM3_IRQ</name>
+        <name>TIM3</name>
         <description>Timer 3 global interrupt</description>
         <value>29</value>
       </interrupt>
@@ -10779,7 +10820,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>O24CE</name>
+              <name>OC4CE</name>
               <description>Output compare 4 clear
               enable</description>
               <bitOffset>15</bitOffset>
@@ -11161,7 +11202,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM4</name>
       <baseAddress>0x40000800</baseAddress>
       <interrupt>
-        <name>TIM4_IRQ</name>
+        <name>TIM4</name>
         <description>Timer 4 global interrupt</description>
         <value>30</value>
       </interrupt>
@@ -11170,7 +11211,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM19</name>
       <baseAddress>0x40015C00</baseAddress>
       <interrupt>
-        <name>TIM19_IRQ</name>
+        <name>TIM19</name>
         <description>Timer 19 global interrupt</description>
         <value>78</value>
       </interrupt>
@@ -11186,7 +11227,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM15_IRQ</name>
+        <name>TIM15</name>
         <description>Timer 15 global interrupt</description>
         <value>24</value>
       </interrupt>
@@ -11906,7 +11947,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM16_IRQ</name>
+        <name>TIM16</name>
         <description>Timer 16 global interrupt</description>
         <value>25</value>
       </interrupt>
@@ -12459,7 +12500,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM17</name>
       <baseAddress>0x40014800</baseAddress>
       <interrupt>
-        <name>TIM17_IRQ</name>
+        <name>TIM17</name>
         <description>Timer 17 global interrupt</description>
         <value>26</value>
       </interrupt>
@@ -12476,7 +12517,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>USART1_IRQ</name>
+        <name>USART1</name>
         <description>USART1 global interrupt/EXTI25 (USART1 wakeup
         event)</description>
         <value>37</value>
@@ -13267,7 +13308,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>USART2</name>
       <baseAddress>0x40004400</baseAddress>
       <interrupt>
-        <name>USART2_IRQ</name>
+        <name>USART2</name>
         <description>USART2 global interrupt/EXTI26 (USART1 wakeup
         event)</description>
         <value>38</value>
@@ -13277,7 +13318,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>USART3</name>
       <baseAddress>0x40004800</baseAddress>
       <interrupt>
-        <name>USART3_IRQ</name>
+        <name>USART3</name>
         <description>USART3 global interrupt/EXTI28 (USART1 wakeup
         event)</description>
         <value>39</value>
@@ -13295,7 +13336,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SPI1_IRQ</name>
+        <name>SPI1</name>
         <description>SPI1 global interrupt</description>
         <value>35</value>
       </interrupt>
@@ -13738,7 +13779,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SPI2</name>
       <baseAddress>0x40003800</baseAddress>
       <interrupt>
-        <name>SPI2_IRQ</name>
+        <name>SPI2</name>
         <description>SPI2 global interrupt</description>
         <value>36</value>
       </interrupt>
@@ -13747,7 +13788,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SPI3</name>
       <baseAddress>0x40003C00</baseAddress>
       <interrupt>
-        <name>SPI3_IRQ</name>
+        <name>SPI3</name>
         <description>SPI3 global interrupt</description>
         <value>51</value>
       </interrupt>
@@ -13771,7 +13812,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC1_IRQ</name>
+        <name>ADC1</name>
         <description>ADC1 interrupt</description>
         <value>18</value>
       </interrupt>
@@ -14567,7 +14608,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>PVD_IRQ</name>
+        <name>PVD</name>
         <description>Power voltage detector through EXTI line
         detection interrupt</description>
         <value>1</value>
@@ -14579,68 +14620,68 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <value>2</value>
       </interrupt>
       <interrupt>
-        <name>EXTI0_IRQ</name>
+        <name>EXTI0</name>
         <description>EXTI Line 0 interrupt</description>
         <value>6</value>
       </interrupt>
       <interrupt>
-        <name>EXTI1_IRQ</name>
+        <name>EXTI1</name>
         <description>EXTI Line1 interrupt</description>
         <value>7</value>
       </interrupt>
       <interrupt>
-        <name>EXTI2_RI_IRQ</name>
+        <name>EXTI2_TS</name>
         <description>EXTI Line 2 and routing interface
         interrupt</description>
         <value>8</value>
       </interrupt>
       <interrupt>
-        <name>EXTI3_IRQ</name>
+        <name>EXTI3</name>
         <description>EXTI Line1 interrupt</description>
         <value>9</value>
       </interrupt>
       <interrupt>
-        <name>EXTI4_IRQ</name>
+        <name>EXTI4</name>
         <description>EXTI Line4 interrupt</description>
         <value>10</value>
       </interrupt>
       <interrupt>
-        <name>EXTI5_9_IRQ</name>
+        <name>EXTI5_9</name>
         <description>EXTI Line[9:5] interrupts</description>
         <value>23</value>
       </interrupt>
       <interrupt>
-        <name>I2C1_EV_IRQ</name>
+        <name>I2C1_EV</name>
         <description>I2C1_EV global interrupt/EXTI Line[3:2]
         interrupts</description>
         <value>31</value>
       </interrupt>
       <interrupt>
-        <name>I2C2_EV_IRQ</name>
+        <name>I2C2_EV</name>
         <description>I2C2_EV global interrupt/EXTI Line[4:2]
         interrupts</description>
         <value>33</value>
       </interrupt>
       <interrupt>
-        <name>USART1_IRQ</name>
+        <name>USART1</name>
         <description>USART1 global interrupt/EXTI25 (USART1 wakeup
         event)</description>
         <value>37</value>
       </interrupt>
       <interrupt>
-        <name>USART2_IRQ</name>
+        <name>USART2</name>
         <description>USART2 global interrupt/EXTI26 (USART1 wakeup
         event)</description>
         <value>38</value>
       </interrupt>
       <interrupt>
-        <name>USART3_IRQ</name>
+        <name>USART3</name>
         <description>USART3 global interrupt/EXTI28 (USART1 wakeup
         event)</description>
         <value>39</value>
       </interrupt>
       <interrupt>
-        <name>EXTI15_10_IRQ</name>
+        <name>EXTI15_10</name>
         <description>EXTI Line[15:10] interrupts</description>
         <value>40</value>
       </interrupt>
@@ -15153,10 +15194,38 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>TR18</name>
+              <description>Rising trigger event configuration of
+              line 18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>TR19</name>
               <description>Rising trigger event configuration of
               line 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR20</name>
+              <description>Rising trigger event configuration of
+              line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR21</name>
+              <description>Rising trigger event configuration of
+              line 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR22</name>
+              <description>Rising trigger event configuration of
+              line 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -15298,10 +15367,38 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>TR18</name>
+              <description>Rising trigger event configuration of
+              line 18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>TR19</name>
-              <description>Falling trigger event configuration of
+              <description>Rising trigger event configuration of
               line 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR20</name>
+              <description>Rising trigger event configuration of
+              line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR21</name>
+              <description>Rising trigger event configuration of
+              line 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TR22</name>
+              <description>Rising trigger event configuration of
+              line 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -15443,10 +15540,38 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>SWIER18</name>
+              <description>Software Interrupt on line
+              18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>SWIER19</name>
               <description>Software Interrupt on line
               19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWIER20</name>
+              <description>Software Interrupt on line
+              20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWIER21</name>
+              <description>Software Interrupt on line
+              21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWIER22</name>
+              <description>Software Interrupt on line
+              22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -15569,9 +15694,33 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>PR18</name>
+              <description>Pending bit 18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>PR19</name>
               <description>Pending bit 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PR20</name>
+              <description>Pending bit 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PR21</name>
+              <description>Pending bit 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PR22</name>
+              <description>Pending bit 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -15589,7 +15738,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CEC_IRQ</name>
+        <name>CEC</name>
         <description>CEC interrupt</description>
         <value>42</value>
       </interrupt>
@@ -16055,26 +16204,31 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CAN_TX_IRQ</name>
+        <name>CAN_TX</name>
         <description>USB high priority/CAN_TX
         interrupt</description>
         <value>19</value>
       </interrupt>
       <interrupt>
-        <name>CAN_RXD_IRQ</name>
+        <name>CAN_RXD</name>
         <description>USB low priority/CAN_RXD
         interrupt</description>
         <value>20</value>
       </interrupt>
       <interrupt>
-        <name>CAN_RXI_IRQ</name>
+        <name>CAN_RXI</name>
         <description>CAN_RXI interrupt</description>
         <value>21</value>
       </interrupt>
       <interrupt>
-        <name>CAN_SCE_IRQ</name>
+        <name>CAN_SCE</name>
         <description>CAN_SCE interrupt</description>
         <value>22</value>
+      </interrupt>
+      <interrupt>
+        <name>COMP1_2</name>
+        <description>Comparator 1/comparator 2 global</description>
+        <value>64</value>
       </interrupt>
       <registers>
         <register>
@@ -29510,29 +29664,29 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CAN_TX_IRQ</name>
+        <name>CAN_TX</name>
         <description>USB high priority/CAN_TX
         interrupt</description>
         <value>19</value>
       </interrupt>
       <interrupt>
-        <name>CAN_RXD_IRQ</name>
+        <name>CAN_RXD</name>
         <description>USB low priority/CAN_RXD
         interrupt</description>
         <value>20</value>
       </interrupt>
       <interrupt>
-        <name>USB_HP_IRQ</name>
+        <name>USB_HP</name>
         <description>USB high priority interrupt</description>
         <value>74</value>
       </interrupt>
       <interrupt>
-        <name>USB_LP_IRQ</name>
+        <name>USB_LP</name>
         <description>USB low priority interrupt</description>
         <value>75</value>
       </interrupt>
       <interrupt>
-        <name>USB_WAKEUP_IRQ</name>
+        <name>USB_WAKEUP</name>
         <description>USB wakeup interrupt</description>
         <value>76</value>
       </interrupt>
@@ -30538,13 +30692,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>I2C1_EV_IRQ</name>
+        <name>I2C1_EV</name>
         <description>I2C1_EV global interrupt/EXTI Line[3:2]
         interrupts</description>
         <value>31</value>
       </interrupt>
       <interrupt>
-        <name>I2C1_ER_IRQ</name>
+        <name>I2C1_ER</name>
         <description>I2C1_ER</description>
         <value>32</value>
       </interrupt>
@@ -31232,13 +31386,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>I2C2</name>
       <baseAddress>0x40005800</baseAddress>
       <interrupt>
-        <name>I2C2_EV_IRQ</name>
+        <name>I2C2_EV</name>
         <description>I2C2_EV global interrupt/EXTI Line[4:2]
         interrupts</description>
         <value>33</value>
       </interrupt>
       <interrupt>
-        <name>I2C2_ER_IRQ</name>
+        <name>I2C2_ER</name>
         <description>I2C2_ER</description>
         <value>34</value>
       </interrupt>
@@ -31369,7 +31523,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>WWDG_IRQ</name>
+        <name>WWDG</name>
         <description>Window Watchdog interrupt</description>
         <value>0</value>
       </interrupt>
@@ -31457,12 +31611,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>RTC_WKUP_IRQ</name>
+        <name>RTC_WKUP</name>
         <description>RTC</description>
         <value>3</value>
       </interrupt>
       <interrupt>
-        <name>RTC_ALARM_IT_IRQ</name>
+        <name>RTC_ALARM</name>
         <description>RTC alarm interrupt</description>
         <value>41</value>
       </interrupt>
@@ -33000,7 +33154,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC_SD1_IRQ</name>
+        <name>SDADC1</name>
         <description>ADC sigma delta 1 (SDADC1) global
         interrupt</description>
         <value>61</value>
@@ -33689,7 +33843,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SDADC2</name>
       <baseAddress>0x40016400</baseAddress>
       <interrupt>
-        <name>ADC_SD2_IRQ</name>
+        <name>SDADC2</name>
         <description>ADC sigma delta 2 (SDADC2) global
         interrupt</description>
         <value>62</value>
@@ -33699,7 +33853,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SDADC3</name>
       <baseAddress>0x40016800</baseAddress>
       <interrupt>
-        <name>ADC_SD3_IRQ</name>
+        <name>SDADC3</name>
         <description>ADC sigma delta 3 (SDADC3) global
         interrupt</description>
         <value>63</value>
@@ -33715,12 +33869,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>TIM18_DAC3_IRQ</name>
-        <description>Timer 18 global interrupt/DAC3 underrun
-        interrupt</description>
-        <value>27</value>
-      </interrupt>
       <registers>
         <register>
           <name>CR</name>
@@ -34113,7 +34261,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM7</name>
       <baseAddress>0x40001400</baseAddress>
       <interrupt>
-        <name>TIM7_IRQ</name>
+        <name>TIM7</name>
         <description>Timer 7 global interrupt</description>
         <value>55</value>
       </interrupt>
@@ -34122,7 +34270,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM18</name>
       <baseAddress>0x40009C00</baseAddress>
       <interrupt>
-        <name>TIM18_DAC3_IRQ</name>
+        <name>TIM18_DAC</name>
         <description>Timer 18 global interrupt/DAC3 underrun
         interrupt</description>
         <value>27</value>
@@ -34139,7 +34287,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM13_IRQ</name>
+        <name>TIM13</name>
         <description>Timer 13 global interrupt</description>
         <value>44</value>
       </interrupt>
@@ -34442,7 +34590,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM14</name>
       <baseAddress>0x40002000</baseAddress>
       <interrupt>
-        <name>TIM14_IRQ</name>
+        <name>TIM14</name>
         <description>Timer 14 global interrupt</description>
         <value>45</value>
       </interrupt>
@@ -34458,7 +34606,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM12_IRQ</name>
+        <name>TIM12</name>
         <description>Timer 12 global interrupt</description>
         <value>43</value>
       </interrupt>
@@ -35330,1161 +35478,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>DAC channel1 DMA underrun
               flag</description>
               <bitOffset>13</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>NVIC</name>
-      <description>Nested Vectored Interrupt
-      Controller</description>
-      <groupName>NVIC</groupName>
-      <baseAddress>0xE000E000</baseAddress>
-      <addressBlock>
-        <offset>0x0</offset>
-        <size>0x455</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>ICTR</name>
-          <displayName>ICTR</displayName>
-          <description>Interrupt Controller Type
-          Register</description>
-          <addressOffset>0x4</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>INTLINESNUM</name>
-              <description>Total number of interrupt lines in
-              groups</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISER0</name>
-          <displayName>ISER0</displayName>
-          <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x100</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETENA</name>
-              <description>SETENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISER1</name>
-          <displayName>ISER1</displayName>
-          <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x104</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETENA</name>
-              <description>SETENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISER2</name>
-          <displayName>ISER2</displayName>
-          <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x108</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETENA</name>
-              <description>SETENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICER0</name>
-          <displayName>ICER0</displayName>
-          <description>Interrupt Clear-Enable
-          Register</description>
-          <addressOffset>0x180</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRENA</name>
-              <description>CLRENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICER1</name>
-          <displayName>ICER1</displayName>
-          <description>Interrupt Clear-Enable
-          Register</description>
-          <addressOffset>0x184</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRENA</name>
-              <description>CLRENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICER2</name>
-          <displayName>ICER2</displayName>
-          <description>Interrupt Clear-Enable
-          Register</description>
-          <addressOffset>0x188</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRENA</name>
-              <description>CLRENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISPR0</name>
-          <displayName>ISPR0</displayName>
-          <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x200</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETPEND</name>
-              <description>SETPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISPR1</name>
-          <displayName>ISPR1</displayName>
-          <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x204</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETPEND</name>
-              <description>SETPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISPR2</name>
-          <displayName>ISPR2</displayName>
-          <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x208</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETPEND</name>
-              <description>SETPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICPR0</name>
-          <displayName>ICPR0</displayName>
-          <description>Interrupt Clear-Pending
-          Register</description>
-          <addressOffset>0x280</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRPEND</name>
-              <description>CLRPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICPR1</name>
-          <displayName>ICPR1</displayName>
-          <description>Interrupt Clear-Pending
-          Register</description>
-          <addressOffset>0x284</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRPEND</name>
-              <description>CLRPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICPR2</name>
-          <displayName>ICPR2</displayName>
-          <description>Interrupt Clear-Pending
-          Register</description>
-          <addressOffset>0x288</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRPEND</name>
-              <description>CLRPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IABR0</name>
-          <displayName>IABR0</displayName>
-          <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x300</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ACTIVE</name>
-              <description>ACTIVE</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IABR1</name>
-          <displayName>IABR1</displayName>
-          <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x304</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ACTIVE</name>
-              <description>ACTIVE</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IABR2</name>
-          <displayName>IABR2</displayName>
-          <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x308</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ACTIVE</name>
-              <description>ACTIVE</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR0</name>
-          <displayName>IPR0</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x400</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR1</name>
-          <displayName>IPR1</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x404</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR2</name>
-          <displayName>IPR2</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x408</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR3</name>
-          <displayName>IPR3</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x40C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR4</name>
-          <displayName>IPR4</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x410</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR5</name>
-          <displayName>IPR5</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x414</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR6</name>
-          <displayName>IPR6</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x418</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR7</name>
-          <displayName>IPR7</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x41C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR8</name>
-          <displayName>IPR8</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x420</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR9</name>
-          <displayName>IPR9</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x424</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR10</name>
-          <displayName>IPR10</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x428</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR11</name>
-          <displayName>IPR11</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x42C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR12</name>
-          <displayName>IPR12</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x430</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR13</name>
-          <displayName>IPR13</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x434</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR14</name>
-          <displayName>IPR14</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x438</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR15</name>
-          <displayName>IPR15</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x43C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR16</name>
-          <displayName>IPR16</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x440</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR17</name>
-          <displayName>IPR17</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x444</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR18</name>
-          <displayName>IPR18</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x448</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR19</name>
-          <displayName>IPR19</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x44C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR20</name>
-          <displayName>IPR20</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x450</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>FPU</name>
-      <description>Floting point unit</description>
-      <groupName>FPU</groupName>
-      <baseAddress>0xE000EB88</baseAddress>
-      <addressBlock>
-        <offset>0x0</offset>
-        <size>0x400</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <interrupt>
-        <name>FPU_IRQ</name>
-        <description>Floating point unit interrupt</description>
-        <value>81</value>
-      </interrupt>
-      <registers>
-        <register>
-          <name>FPSCR</name>
-          <displayName>FPSCR</displayName>
-          <description>Floating-point Status and Control
-          Register</description>
-          <addressOffset>0x0</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IOC</name>
-              <description>Invalid Operation cumulative exception
-              bit</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>DZC</name>
-              <description>Division by Zero cumulative exception
-              bit</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>OFC</name>
-              <description>Overflow cumulative exception
-              bit</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>UFC</name>
-              <description>Underflow cumulative exception
-              bit</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>IXC</name>
-              <description>Inexact cumulative exception
-              bit</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>IDC</name>
-              <description>Input Denormal cumulative exception
-              bit</description>
-              <bitOffset>7</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RMode</name>
-              <description>Rounding Mode control
-              field.</description>
-              <bitOffset>22</bitOffset>
-              <bitWidth>2</bitWidth>
-            </field>
-            <field>
-              <name>FZ</name>
-              <description>Flush-to-zero mode control
-              bit</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>DN</name>
-              <description>Default NaN mode control
-              bit</description>
-              <bitOffset>25</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>AHP</name>
-              <description>Alternative half-precision control
-              bit</description>
-              <bitOffset>26</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>V</name>
-              <description>Overflow condition code
-              flag</description>
-              <bitOffset>28</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>C</name>
-              <description>Carry condition code flag</description>
-              <bitOffset>29</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>Z</name>
-              <description>Zero condition code flag</description>
-              <bitOffset>30</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>N</name>
-              <description>Negative condition code
-              flag</description>
-              <bitOffset>31</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>

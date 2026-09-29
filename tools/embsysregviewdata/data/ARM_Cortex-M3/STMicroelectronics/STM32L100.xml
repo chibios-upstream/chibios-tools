@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+Copyright (c) 2023 STMicroelectronics.
+
+ SPDX-License-Identifier: Apache-2.0
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <device schemaVersion="1.1"
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
-  <cpu>                                                           <!-- details about the cpu embedded in the device -->
+  <name>STM32L100</name>
+  <version>1.5</version>
+  <description>STM32L100</description>
+  <cpu>
     <name>CM3</name>
     <revision>r1p1</revision>
     <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>false</fpuPresent>
     <nvicPrioBits>4</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
   </cpu>
-  <name>STM32L100</name>
-  <version>1.2</version>
-  <description>STM32L100</description>
-  <!--Bus Interface Properties-->
-  <!--Cortex-M3 is byte addressable-->
   <addressUnitBits>8</addressUnitBits>
-  <!--the maximum data bit width accessible within a single transfer-->
   <width>32</width>
-  <!--Register Default Properties-->
   <size>0x20</size>
   <resetValue>0x0</resetValue>
   <resetMask>0xFFFFFFFF</resetMask>
@@ -11794,7 +11810,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>ICR</name>
           <displayName>ICR</displayName>
           <description>RI input capture register</description>
-          <addressOffset>0x4</addressOffset>
+          <addressOffset>0x0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -11864,7 +11880,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ASCR1</displayName>
           <description>RI analog switches control register
           1</description>
-          <addressOffset>0x8</addressOffset>
+          <addressOffset>0x4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12067,7 +12083,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ASCR2</displayName>
           <description>RI analog switches control register
           2</description>
-          <addressOffset>0xC</addressOffset>
+          <addressOffset>0x8</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12261,7 +12277,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>HYSCR1</displayName>
           <description>RI hysteresis control register
           1</description>
-          <addressOffset>0x10</addressOffset>
+          <addressOffset>0xC</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12287,7 +12303,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>HYSCR2</displayName>
           <description>RI hysteresis control register
           2</description>
-          <addressOffset>0x14</addressOffset>
+          <addressOffset>0x10</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12313,7 +12329,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>HYSCR3</displayName>
           <description>RI hysteresis control register
           3</description>
-          <addressOffset>0x18</addressOffset>
+          <addressOffset>0x14</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12338,7 +12354,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>HYSCR4</name>
           <displayName>HYSCR4</displayName>
           <description>Hysteresis control register</description>
-          <addressOffset>0x1C</addressOffset>
+          <addressOffset>0x18</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -12347,6 +12363,261 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>PG</name>
               <description>Port G hysteresis control
               on/off</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>ASMR1</name>
+          <displayName>ASMR1</displayName>
+          <description>Analog switch mode register</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PA</name>
+              <description>Port A analog switch mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CMR1</name>
+          <displayName>CMR1</displayName>
+          <description>Channel mask register</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PA</name>
+              <description>Port A channel masking</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CICR1</name>
+          <displayName>CICR1</displayName>
+          <description>Channel identification for capture register</description>
+          <addressOffset>0x24</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PA</name>
+              <description>Port A channel identification for capture</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>ASMR2</name>
+          <displayName>ASMR2</displayName>
+          <description>Analog switch mode register</description>
+          <addressOffset>0x28</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PB</name>
+              <description>Port B analog switch mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CMR2</name>
+          <displayName>CMR2</displayName>
+          <description>Channel mask register</description>
+          <addressOffset>0x2C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PB</name>
+              <description>Port B channel masking</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CICR2</name>
+          <displayName>CICR2</displayName>
+          <description>Channel identification for capture register</description>
+          <addressOffset>0x30</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PB</name>
+              <description>Port B channel identification for capture</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>ASMR3</name>
+          <displayName>ASMR3</displayName>
+          <description>Analog switch mode register</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PC</name>
+              <description>Port C analog switch mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CMR3</name>
+          <displayName>CMR3</displayName>
+          <description>Channel mask register</description>
+          <addressOffset>0x38</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PC</name>
+              <description>Port C channel masking</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CICR3</name>
+          <displayName>CICR3</displayName>
+          <description>Channel identification for capture register</description>
+          <addressOffset>0x3C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PC</name>
+              <description>Port C channel identification for capture</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>ASMR4</name>
+          <displayName>ASMR4</displayName>
+          <description>Analog switch mode register</description>
+          <addressOffset>0x40</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PF</name>
+              <description>Port F analog switch mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CMR4</name>
+          <displayName>CMR4</displayName>
+          <description>Channel mask register</description>
+          <addressOffset>0x44</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PF</name>
+              <description>Port F channel masking</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CICR4</name>
+          <displayName>CICR4</displayName>
+          <description>Channel identification for capture register</description>
+          <addressOffset>0x48</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PF</name>
+              <description>Port F channel identification for capture</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>ASMR5</name>
+          <displayName>ASMR5</displayName>
+          <description>Analog switch mode register</description>
+          <addressOffset>0x4C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PG</name>
+              <description>Port G analog switch mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CMR5</name>
+          <displayName>CMR5</displayName>
+          <description>Channel mask register</description>
+          <addressOffset>0x50</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PG</name>
+              <description>Port G channel masking</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>CICR5</name>
+          <displayName>CICR5</displayName>
+          <description>Channel identification for capture register</description>
+          <addressOffset>0x54</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PG</name>
+              <description>Port G channel identification for capture</description>
               <bitOffset>0</bitOffset>
               <bitWidth>16</bitWidth>
             </field>
@@ -18901,721 +19172,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               enable</description>
               <bitOffset>23</bitOffset>
               <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>NVIC</name>
-      <description>Nested Vectored Interrupt
-      Controller</description>
-      <groupName>NVIC</groupName>
-      <baseAddress>0xE000E000</baseAddress>
-      <addressBlock>
-        <offset>0x0</offset>
-        <size>0x1001</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>ICTR</name>
-          <displayName>ICTR</displayName>
-          <description>Interrupt Controller Type
-          Register</description>
-          <addressOffset>0x4</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>INTLINESNUM</name>
-              <description>Total number of interrupt lines in
-              groups</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>STIR</name>
-          <displayName>STIR</displayName>
-          <description>Software Triggered Interrupt
-          Register</description>
-          <addressOffset>0xF00</addressOffset>
-          <size>0x20</size>
-          <access>write-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>INTID</name>
-              <description>interrupt to be triggered</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>9</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISER0</name>
-          <displayName>ISER0</displayName>
-          <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x100</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETENA</name>
-              <description>SETENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISER1</name>
-          <displayName>ISER1</displayName>
-          <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x104</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETENA</name>
-              <description>SETENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICER0</name>
-          <displayName>ICER0</displayName>
-          <description>Interrupt Clear-Enable
-          Register</description>
-          <addressOffset>0x180</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRENA</name>
-              <description>CLRENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICER1</name>
-          <displayName>ICER1</displayName>
-          <description>Interrupt Clear-Enable
-          Register</description>
-          <addressOffset>0x184</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRENA</name>
-              <description>CLRENA</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISPR0</name>
-          <displayName>ISPR0</displayName>
-          <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x200</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETPEND</name>
-              <description>SETPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ISPR1</name>
-          <displayName>ISPR1</displayName>
-          <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x204</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>SETPEND</name>
-              <description>SETPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICPR0</name>
-          <displayName>ICPR0</displayName>
-          <description>Interrupt Clear-Pending
-          Register</description>
-          <addressOffset>0x280</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRPEND</name>
-              <description>CLRPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>ICPR1</name>
-          <displayName>ICPR1</displayName>
-          <description>Interrupt Clear-Pending
-          Register</description>
-          <addressOffset>0x284</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRPEND</name>
-              <description>CLRPEND</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IABR0</name>
-          <displayName>IABR0</displayName>
-          <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x300</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ACTIVE</name>
-              <description>ACTIVE</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IABR1</name>
-          <displayName>IABR1</displayName>
-          <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x304</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ACTIVE</name>
-              <description>ACTIVE</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR0</name>
-          <displayName>IPR0</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x400</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR1</name>
-          <displayName>IPR1</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x404</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR2</name>
-          <displayName>IPR2</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x408</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR3</name>
-          <displayName>IPR3</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x40C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR4</name>
-          <displayName>IPR4</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x410</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR5</name>
-          <displayName>IPR5</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x414</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR6</name>
-          <displayName>IPR6</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x418</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR7</name>
-          <displayName>IPR7</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x41C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR8</name>
-          <displayName>IPR8</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x420</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR9</name>
-          <displayName>IPR9</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x424</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR10</name>
-          <displayName>IPR10</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x428</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR11</name>
-          <displayName>IPR11</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x42C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR12</name>
-          <displayName>IPR12</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x430</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>IPR13</name>
-          <displayName>IPR13</displayName>
-          <description>Interrupt Priority Register</description>
-          <addressOffset>0x434</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>IPR_N0</name>
-              <description>IPR_N0</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N1</name>
-              <description>IPR_N1</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N2</name>
-              <description>IPR_N2</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>IPR_N3</name>
-              <description>IPR_N3</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
             </field>
           </fields>
         </register>
